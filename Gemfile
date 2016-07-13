@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
+ruby '2.3.0'
 
-gem 'rails', '4.2.5'
+gem 'rails', '5.0.0'
 # gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -35,6 +36,7 @@ gem 'meta-tags'
 
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'sqlite3'
   gem 'bullet'
   gem 'rspec-rails'
   gem 'spring'
@@ -48,4 +50,9 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'brakeman'
+end
+
+# Heroku
+group :production do
+  gem 'pg'
 end

@@ -1,0 +1,12 @@
+= form_for @booth do |f|
+  - if @booth.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@booth.errors.count, "error")} prohibited this booth from being saved:"
+      ul
+        - @booth.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :state
+    = f.number_field :state
+  .actions = f.submit

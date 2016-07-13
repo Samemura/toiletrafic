@@ -1,0 +1,17 @@
+h1 トイレ空き状況
+
+table
+  thead
+    tr
+      th トイレ番号
+      th 状態
+      th
+      th
+      th
+
+  tbody
+    - @booths.each do |booth|
+      tr
+        td = booth.id
+        td = booth.state
+br
