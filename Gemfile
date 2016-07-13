@@ -15,6 +15,7 @@ gem 'sprockets-rails'
 gem 'unicorn'
 gem 'smarter_csv'
 gem 'hashie'
+gem 'turbolinks'
 
 # json schema
 gem 'json_schema'
