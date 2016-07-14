@@ -1,6 +1,7 @@
 App.booth = App.cable.subscriptions.create("BoothChannel", {
   connected: function() {
     // Called when the subscription is ready for use on the server
+    console.log("BoothChannel connected.");
   },
 
   disconnected: function() {
@@ -10,6 +11,7 @@ App.booth = App.cable.subscriptions.create("BoothChannel", {
   received: function(data) {
     console.log('received via channel.');
     console.dir(data);
+    alert("トイレが空きましたよ！");
     $('#booths').append(data['message']);
   },
 
