@@ -2,7 +2,7 @@ class BoothBroadCastJob < ApplicationJob
   queue_as :default
 
   def perform(data)
-    ActionCable.server.broadcast 'booth_channel', {message: render_message(data)}
+    ActionCable.server.broadcast 'booth_channel', {boothId: data.id ,message: render_message(data)}
   end
 
   private
