@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 gem 'rails', '5.0.0'
+gem 'puma'
+
 # gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -55,4 +57,5 @@ end
 # Heroku
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end

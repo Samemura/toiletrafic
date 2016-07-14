@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :booths, only: [:index]
   root 'booths#index'
+  resources :booths, only: [:index]
 
 end
