@@ -5,7 +5,7 @@ class BoothsController < ApplicationController
   # GET /booths
   # GET /booths.json
   def index
-    @booths = Booth.all
+    @booths = Booth.all.order(id: 'asc')
   end
 
   # GET /booths/1
@@ -70,6 +70,10 @@ class BoothsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def booth_params
-    params.permit(:state)
+    if params[:format] == "json"
+      params.permit(:state)
+    else
+      params.require(:booth).permit(:state)
+    end
   end
 end
