@@ -1,6 +1,11 @@
-- if without_class
+- unless defined? without_class
   td class="booth" id="booth-#{booth.id.to_s}"
-
+    p トイレ #{booth.id.to_s}
+    = image_tag(((booth.state == "vacant") ? "booth/open.jpg" : "booth/close.png"), \
+      class: "state", id:"booth-state-#{booth.id.to_s}", size: "100x140")
+- else
   p トイレ #{booth.id.to_s}
   = image_tag(((booth.state == "vacant") ? "booth/open.jpg" : "booth/close.png"), \
     class: "state", id:"booth-state-#{booth.id.to_s}", size: "100x140")
+
+/ helper for block https://github.com/slim-template/slim/blob/master/README.jp.md#ヘルパ-キャプチャとインクルード
