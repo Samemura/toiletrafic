@@ -1,7 +1,3 @@
-window.onload = function() {
-  // $('#booth-1').style.webkitAnimationPlayState="paused";
-};
-
 App.booth = App.cable.subscriptions.create("BoothChannel", {
   connected: function() {
     console.log("BoothChannel connected.");
