@@ -8,6 +8,6 @@ class BoothBroadCastJob < ApplicationJob
   private
 
   def render_message(data)
-    ApplicationController.renderer.render(partial: 'booths/booth', locals: { booth: data })
+    ApplicationController.renderer.render(partial: 'booths/booth', locals: { booth: data, without_class: true })
   end
 end
