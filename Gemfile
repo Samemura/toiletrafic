@@ -32,6 +32,7 @@ gem 'autoprefixer-rails'
 gem 'sass-globbing'
 gem 'jpmobile'
 gem 'colorable'
+gem 'milligram'
 
 # SEO
 gem 'meta-tags'

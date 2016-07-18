@@ -1,3 +1,7 @@
+window.onload = function() {
+  // $('#booth-1').style.webkitAnimationPlayState="paused";
+};
+
 App.booth = App.cable.subscriptions.create("BoothChannel", {
   connected: function() {
     console.log("BoothChannel connected.");
@@ -10,8 +14,12 @@ App.booth = App.cable.subscriptions.create("BoothChannel", {
   received: function(data) {
     console.log('received via channel.');
     console.dir(data);
-    alert("トイレ" + data['boothId'] + " が空きましたよ！");
-    $('#booth-'+data['boothId']).html(data['message']);
+    var msg = "トイレ" + data['boothId'] + ((data['boothState'] == "vacant") ? " が空きましたよ！" : " が使用されました。") ;
+
+    $('#booth-'+data['boothId']).removeClass('booth-state-animation'); // removeClass -> addClass need process so should be before alert.
+    alert(msg);
+    $('#booth-'+data['boothId']).html(data['html']);
+    $('#booth-'+data['boothId']).addClass('booth-state-animation');
   },
 
   traffic: function(msg) {
