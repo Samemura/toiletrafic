@@ -7,6 +7,5 @@
           li = message
 
   .field
-    = f.label :state
-    = f.text_field :state
+      = f.select :state, Booth.states.keys
   .actions = f.submit
