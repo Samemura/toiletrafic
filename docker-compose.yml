@@ -1,0 +1,34 @@
+version: '2'
+services:
+  db:
+    image: postgres
+
+  cache:
+    image: redis
+
+  bundle:
+    image: busybox
+    volumes:
+      - /usr/local/bundle
+
+  web:
+    build: .
+    command:
+      [ "bash", "-c", "bundle check || bundle install; rm -f tmp/pids/server.pid; rails server -p 3000 -b 0.0.0.0" ]
+    volumes:
+      - .:/usr/src/myapp
+    volumes_from:
+      - bundle
+    ports:
+      - "3000:3000"
+    # environment:
+      # - DB_USERNAME=root
+      # - DB_PASSWORD=password
+      # - DB_HOST=db
+    depends_on:
+      - db
+      - cache
+      - bundle
+    links:
+      - db
+      - cache
