@@ -27,6 +27,7 @@ services:
       - DB_USERNAME=root
       - DB_PASSWORD=password
       - DB_HOST=db
+      - CACHE_HOST="redis://cache:6379/0"
     depends_on:
       - bundle
     links:

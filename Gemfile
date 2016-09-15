@@ -30,8 +30,6 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'bullet'
   gem 'rspec-rails'
-  gem 'spring'
-  gem 'spring-commands-rspec'
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'annotate'

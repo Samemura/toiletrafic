@@ -1,10 +1,10 @@
 production:
   adapter: redis
-  url: redis://redistogo:b0a15af3a4f5b0d248e3159888e00d84@sculpin.redistogo.com:9105/
+  url: <%= ENV['CACHE_HOST'] %>
 
 development: &development
   adapter: redis
-  url: redis://cache:6379
+  url: <%= ENV['CACHE_HOST'] %>
 
 test:
   <<: *development
