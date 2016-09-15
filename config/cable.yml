@@ -3,7 +3,8 @@ production:
   url: <%= ENV['CACHE_HOST'] %>
 
 development: &development
-  adapter: async
+  adapter: redis
+  url: <%= ENV['CACHE_HOST'] %>
 
 test:
   <<: *development
