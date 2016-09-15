@@ -40,5 +40,6 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   config.web_console.whitelisted_ips = '172.20.0.1'
 
+  config.web_socket_server_url = "ws://smart-toilet.kayac.biz/cable"
   config.action_cable.allowed_request_origins = ['http://smart-toilet.kayac.biz']
 end
