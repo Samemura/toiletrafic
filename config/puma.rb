@@ -8,6 +8,8 @@
 # ENV['RAILS_RELATIVE_URL_ROOT'] = "/gitlab"
 
 require "yaml"
+require "dotenv"
+Dotenv.load
 
 # ROOT
 RAILS_ROOT = File.expand_path(File.dirname(__FILE__) + "/..")
@@ -120,10 +122,8 @@ workers CONFIG['worker']
 # This can be called multiple times to add hooks.
 #
 on_worker_boot do
-  #   puts 'On worker boot...'
-
+  # puts 'On worker boot...'
   defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
-
 end
 
 # === Puma control rack application ===
