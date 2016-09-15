@@ -14,7 +14,7 @@ gem 'config'
 gem 'sprockets-rails'
 gem 'unicorn'
 gem 'turbolinks'
-gem 'pg'
+gem 'mysql2'
 gem 'redis'
 
 # front development

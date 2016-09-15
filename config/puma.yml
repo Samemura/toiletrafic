@@ -1,0 +1,26 @@
+defaults: &defaults
+  log:
+    stdout:   "log/stdout.log"
+    stderr:   "log/stderr.log"
+    append:   true
+  pid:        "tmp/pids/app.pid"
+  socket:     "tmp/sockets/app.sock"
+  state:      "tmp/pids/puma.state"
+  thread:
+    min:      16
+    max:      16
+
+  # 0 for jruby
+  # workers 2 # if you have at least 1.5 GB RAM
+  # workers 3 # if you have at least 2   GB RAM
+  # workers 4 # if you have at least 2.5 GB RAM
+  worker:     0
+
+test:
+  <<: *defaults
+
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults
