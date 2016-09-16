@@ -17,6 +17,9 @@ gem 'turbolinks'
 gem 'mysql2'
 gem 'redis'
 
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', github: 'sferik/rails_admin'
+
 # front development
 gem 'slim-rails'
 gem 'html2slim'

@@ -17,6 +17,9 @@ RUN apt-get install -y cron && apt-get clean
 # graphviz / dot for railroady and erd
 RUN apt-get install -y graphviz && apt-get clean
 
+# git
+RUN apt-get install -y git && apt-get clean
+
 # alias
 RUN echo 'alias railss="rails server -p 3000 -b 0.0.0.0"' >> ~/.bashrc
 
