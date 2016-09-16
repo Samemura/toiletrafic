@@ -28,6 +28,7 @@ services:
       - DB_PASSWORD=password
       - DB_HOST=db
       - CACHE_HOST="redis://cache:6379/0"
+      - DEBUG_WITH_SPRING=true
     depends_on:
       - bundle
     links:

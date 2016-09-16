@@ -33,6 +33,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'annotate'
+  gem 'spring' if ENV['DEBUG_WITH_SPRING'] == 'true'
 end
 
 group :development do
