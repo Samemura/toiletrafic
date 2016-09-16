@@ -2,11 +2,11 @@ class DeviseCreateAdmins < ActiveRecord::Migration[5.0]
   def change
     create_table :admins do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
+      t.string :email,              null: false, default: "", limit: 191
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
-      t.string   :reset_password_token
+      t.string   :reset_password_token, limit: 191
       t.datetime :reset_password_sent_at
 
       ## Rememberable
@@ -38,7 +38,13 @@ class DeviseCreateAdmins < ActiveRecord::Migration[5.0]
     add_index :admins, :reset_password_token, unique: true
     # add_index :admins, :confirmation_token,   unique: true
     # add_index :admins, :unlock　_token,         unique: true
+  end
 
-    Admin.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
+  def migrate(direction)
+    super
+
+    if direction == :up
+      Admin.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
+    end
   end
 end
