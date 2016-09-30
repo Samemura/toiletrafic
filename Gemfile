@@ -20,8 +20,9 @@ gem 'redis'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', github: 'sferik/rails_admin'
 gem 'devise'
+gem 'paper_trail'
 
-# front development
+# front developmentbundl
 gem 'slim-rails'
 gem 'html2slim'
 gem 'autoprefixer-rails'
