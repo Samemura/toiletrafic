@@ -2,3 +2,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+//= require Chart.bundle
+//= require chartkick

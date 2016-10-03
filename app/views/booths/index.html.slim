@@ -7,3 +7,7 @@ table id="booths"
   tbody
     tr
       = render @booths
+
+
+h2 時間別使用率
+= area_chart BoothUsage.hourly_usage

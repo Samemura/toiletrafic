@@ -81,6 +81,7 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
     byebug (9.0.5)
+    chartkick (2.1.1)
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -113,6 +114,8 @@ GEM
       railties (>= 3.2, < 5.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    groupdate (3.0.2)
+      activesupport (>= 3)
     haml (4.0.7)
       tilt
     hpricot (0.8.6)
@@ -293,11 +296,13 @@ DEPENDENCIES
   binding_of_caller
   brakeman
   bullet
+  chartkick
   coffee-rails (~> 4.1.0)
   colorable
   config
   devise
   dotenv-rails
+  groupdate
   html2slim
   jbuilder (~> 2.0)
   jpmobile

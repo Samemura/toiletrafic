@@ -30,7 +30,9 @@ RailsAdmin.config do |config|
 
   # == PaperTrail ==
   PAPER_TRAIL_AUDIT_MODELS = [:Booth]
-  config.audit_with :paper_trail, PAPER_TRAIL_AUDIT_MODELS, 'PaperTrail::Version' # PaperTrail >= 3.0.0
+  PAPER_TRAIL_AUDIT_MODELS.each do |m|
+    config.audit_with :paper_trail, m, 'PaperTrail::Version' # PaperTrail >= 3.0.0
+  end
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 

@@ -32,6 +32,10 @@ gem 'jpmobile'
 gem 'colorable'
 gem 'milligram'
 
+# Chart
+gem "chartkick"
+gem 'groupdate'
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'bullet'
