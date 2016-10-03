@@ -19,6 +19,7 @@ gem 'redis'
 
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', github: 'sferik/rails_admin'
+gem 'rails_admin_history_rollback'
 gem 'devise'
 gem 'paper_trail'
 

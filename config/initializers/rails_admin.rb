@@ -28,14 +28,9 @@ RailsAdmin.config do |config|
   end
   config.current_user_method(&:current_admin)
 
-  ## == Cancan ==
-  # config.authorize_with :cancan
-
-  ## == Pundit ==
-  # config.authorize_with :pundit
-
-  ## == PaperTrail ==
-  # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
+  # == PaperTrail ==
+  PAPER_TRAIL_AUDIT_MODELS = [:Booth]
+  config.audit_with :paper_trail, PAPER_TRAIL_AUDIT_MODELS, 'PaperTrail::Version' # PaperTrail >= 3.0.0
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
@@ -52,10 +47,13 @@ RailsAdmin.config do |config|
     show
     edit
     delete
-    show_in_app
 
-    ## With an audit adapter, you can add:
-    # history_index
-    # history_show
+    # With an audit adapter, you can add:
+    history_index do
+      only PAPER_TRAIL_AUDIT_MODELS
+    end
+    history_show do
+      only PAPER_TRAIL_AUDIT_MODELS
+    end
   end
 end
