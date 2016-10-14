@@ -1,1 +1,2 @@
-Smart toilet
+Smart-toilet
+トイレ状況監視
