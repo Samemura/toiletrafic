@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   #TODO: only for testsite. to be removed for production.
   get 'git/pull'
+  post 'git/pull' # Github webhook
 end
