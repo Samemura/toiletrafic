@@ -42,15 +42,11 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'pry-byebug'
-  gem 'annotate'
-  gem 'spring' if ENV['DEBUG_WITH_SPRING'] == 'true'
-end
-
-group :development do
-  gem 'web-console', '~> 2.0'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'brakeman'
+  gem 'annotate'
+  gem 'spring' if ENV['DEBUG_WITH_SPRING'] == 'true'
 end
 
 # Heroku
