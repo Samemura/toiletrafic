@@ -19,7 +19,7 @@ class Booth < ApplicationRecord
   after_update_commit { BoothBroadCastJob.perform_later(self); self.create_usage; BoothUsage.delete_olds }
 
   def create_usage
-    prev = self.versions.last.reify
+    prev = self.previous
     if self.state_changed(prev, "occupied", "vacant")
       self.used_minutes(prev).each do |k, v|
         self.booth_usages.create(created_at: k, use_minute: v)
@@ -45,5 +45,9 @@ class Booth < ApplicationRecord
     end
 
     return result
+  end
+
+  def previous
+    self.versions.last.reify
   end
 end

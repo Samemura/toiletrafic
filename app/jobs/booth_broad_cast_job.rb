@@ -1,13 +1,17 @@
 class BoothBroadCastJob < ApplicationJob
   queue_as :default
 
-  def perform(data)
-    ActionCable.server.broadcast 'booth_channel', {boothId: data.id, boothState: data.state, html: render_html(data)}
+  def perform(booth)
+    Rails.logger "mmmmmmmmmmmmmmmm"
+    Rails.logger "#{booth.state}, #{booth.previous.state}"
+    if booth.state != booth.previous.state
+      ActionCable.server.broadcast 'booth_channel', {boothId: booth.id, boothState: booth.state, html: render_html(booth)}
+    end
   end
 
   private
 
-  def render_html(data)
-    ApplicationController.renderer.render(partial: 'booths/booth', locals: { booth: data, without_class: true })
+  def render_html(booth)
+    ApplicationController.renderer.render(partial: 'booths/booth', locals: { booth: booth, without_class: true })
   end
 end
