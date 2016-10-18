@@ -2,11 +2,7 @@ class BoothBroadCastJob < ApplicationJob
   queue_as :default
 
   def perform(booth)
-    Rails.logger "mmmmmmmmmmmmmmmm"
-    Rails.logger "#{booth.state}, #{booth.previous.state}"
-    if booth.state != booth.previous.state
-      ActionCable.server.broadcast 'booth_channel', {boothId: booth.id, boothState: booth.state, html: render_html(booth)}
-    end
+    ActionCable.server.broadcast 'booth_channel', {boothId: booth.id, boothState: booth.state, html: render_html(booth)}
   end
 
   private
