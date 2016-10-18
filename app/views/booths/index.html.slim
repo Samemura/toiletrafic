@@ -12,5 +12,5 @@ table id="booths"
 h2 時間別使用率[%]
 = area_chart [ \
   { name: "今日" ,data: BoothUsage.by_hour(Date.today)}, \
-  { name: "平均", data: BoothUsage.average_by_hour(7.day.ago..Time.now)} \
+  { name: "平均", data: BoothUsage.average_by_hour} \
 ]

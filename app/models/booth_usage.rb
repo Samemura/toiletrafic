@@ -14,7 +14,7 @@
 #
 
 class BoothUsage < ApplicationRecord
-  EXIPRE_PERIOD = 7.days.ago
+  EXIPRE_PERIOD = 8.days.ago.at_end_of_day
 
   scope :created_at, ->(t=Time.now) { where(created_at: t) }
   scope :without_day_of_week, ->(day) { where("DAYOFWEEK(created_at) != ?", day)}
@@ -26,13 +26,17 @@ class BoothUsage < ApplicationRecord
       self.created_at(day.to_time.all_day).group_by_hour_of_day(:created_at).sum(:use_minute).select_by_key_range(hour_range).value_to_percent(Booth.count*60)
     end
 
-    def average_by_hour(period=1.month.ago..Time.now, hour_range: 8..19)
-      days = ((period.last-period.first)/60/60/24).round
+    def average_by_hour(period=EXIPRE_PERIOD..1.day.ago.at_end_of_day, hour_range: 8..19)
+      days = ((period.last-period.first).to_f/60/60/24) - self.weekdays(period)
       self.created_at(period).without_day_of_week(1).without_day_of_week(7).group_by_hour_of_day(:created_at).sum(:use_minute).select_by_key_range(hour_range).value_to_percent(Booth.count*60*days)
     end
 
     def delete_olds
       self.where("created_at < ?", EXIPRE_PERIOD).delete_all
+    end
+
+    def weekdays(period)
+      period.first.to_datetime.step(period.last.to_datetime, 1).inject(0){|sum, p| sum + ([0,6].exclude?(p.wday) ? 1 : 0)}
     end
   end
 end

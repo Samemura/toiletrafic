@@ -1,15 +1,18 @@
 class ToiletsController < ApplicationController
+  before_action :set_usage, only: [:index, :show]
+
   def index
-    @usage = {
-      today: BoothUsage.by_hour(Date.today),
-      average: BoothUsage.average_by_hour(7.day.ago..Time.now)
-    }
   end
 
   def show
+  end
+
+  private
+
+  def set_usage
     @usage = {
       today: BoothUsage.by_hour(Date.today),
-      average: BoothUsage.average_by_hour(7.day.ago..Time.now)
+      average: BoothUsage.average_by_hour
     }
   end
 end
