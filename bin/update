@@ -26,8 +26,8 @@ chdir APP_ROOT do
 
   puts "\n== Restarting application server =="
   system 'kill `cat tmp/pids/app.pid`'
-  system! 'bundle exec rpush stop'
-  system! 'rm log/rpush.log'
+  system 'bundle exec rpush stop'
+  system 'rm log/rpush.log'
   system! 'bundle exec rpush start'
   system! 'bundle exec puma -d -e development -C config/puma.rb'
 end
