@@ -36,6 +36,10 @@ gem 'milligram'
 gem "chartkick"
 gem 'groupdate'
 
+# Push notification
+gem 'rpush'
+gem 'net-http-persistent', '2.9.4'
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'bullet'

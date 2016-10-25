@@ -16,7 +16,7 @@ class Booth < ApplicationRecord
   accepts_nested_attributes_for :booth_usages
 
   enum state: {vacant:0, occupied:1, failed:2}
-  after_update_commit { BoothBroadCastJob.perform_later(self); self.create_usage; BoothUsage.delete_olds }
+  after_update_commit { BoothBroadCastJob.perform_later(self); self.create_usage; NotificationService.new(self).send; BoothUsage.delete_olds }
 
   def create_usage
     prev = self.previous
