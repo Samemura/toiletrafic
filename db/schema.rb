@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161021150557) do
+ActiveRecord::Schema.define(version: 20161025072147) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "email",                  limit: 191, default: "", null: false
@@ -100,6 +100,14 @@ ActiveRecord::Schema.define(version: 20161021150557) do
     t.boolean  "content_available",                  default: false
     t.text     "notification",      limit: 65535
     t.index ["delivered", "failed"], name: "index_rpush_notifications_multi", using: :btree
+  end
+
+  create_table "tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string   "token"
+    t.string   "platform",   limit: 191
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["platform"], name: "index_tokens_on_platform", using: :btree
   end
 
   create_table "versions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|

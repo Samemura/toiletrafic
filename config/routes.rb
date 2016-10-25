@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'booths#index'
   resources :booths, only: [:index, :show, :update], path: 'api/v1/booths', format: 'json'
   resources :toilets, only: [:index, :show], path: 'api/v1/toilets', format: 'json'
+  resources :tokens, only: [:create], path: 'api/v1/tokens', format: 'json'
 
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
