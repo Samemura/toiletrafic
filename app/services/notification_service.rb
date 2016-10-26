@@ -22,6 +22,3 @@ class NotificationService
     n.save!
   end
 end
-
-# "fvZj6_iC2HM:APA91bGU28hlTLzx8_-edDlHPfvJc6Kziod4820Msz8HfPQMEAf2Ljs9Q9tP3qtLl728IycC_7TX6XpkSqlX5YNwMzAXILimJBh3U9Hykr0SBHIYkqMbg9zTs850Dws0EMhDpasUJgNJ",
-# "fe4Ohizhv-0:APA91bGU5Ji_FaYGojHVfsYOdIVVDKd_uEdArNcYkppqk14RGkeCHhchJXo09JUwpeSDiDLkh8YIHJjvDeVhNIqN1NR2c33AMikRBCrSj6q3Yj5OjVnZXaGgb4AeKlWfdMdWlyTkbguS"
