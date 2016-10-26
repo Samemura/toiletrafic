@@ -8,10 +8,11 @@ class TokensController < ApplicationController
   rescue => error
     render json: {error: error}, status: :unprocessable_entity
   end
-end
 
-private
+  private
 
-def token_params
-  params.permit(:platform, :token)
+  def token_params
+    params.permit(:platform, :token)
+  end
+
 end
