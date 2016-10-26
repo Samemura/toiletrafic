@@ -42,3 +42,5 @@ bower.json
 
 bin/rails
 bin/rake
+
+**.pem

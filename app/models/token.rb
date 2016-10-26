@@ -18,5 +18,4 @@ class Token < ApplicationRecord
   scope :ios, -> () { where(platform: "ios") }
 
   scope :tokens, -> () { pluck(:token) }
-
 end
