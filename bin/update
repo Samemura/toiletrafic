@@ -30,4 +30,5 @@ chdir APP_ROOT do
   system 'rm log/rpush.log'
   system! 'bundle exec rpush start'
   system! 'bundle exec puma -d -e development -C config/puma.rb'
+  system 'git checkout Gemfile.lock db/schema.rb'
 end

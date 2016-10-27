@@ -44,6 +44,6 @@ class NotificationService
 
   def send_to_slack(msg)
     status_str = Booth.all.map{|b| "`#{b.id}:" + (b.vacant? ? "🚽" : "💩") + "`" }.join(" ")
-    SlackNotifyService.new.send(msg + "\n" + status_str)
+    SlackNotifyService.new.send("-------------------------------------------------------" + msg + "\n" + status_str)
   end
 end
