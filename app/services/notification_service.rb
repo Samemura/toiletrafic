@@ -6,17 +6,20 @@ class NotificationService
   def send
     case @booth.state
     when "vacant" then
-      msg = "#{@booth.id}のトイレが空きました！"
+      msg = "トイレ#{@booth.id} が空きました！"
     when "occupied" then
-      msg = "#{@booth.id}のトイレが使用されました！"
+      msg = "トイレ#{@booth.id} が使用されました！"
     end
     send_to_android(msg)
     send_to_ios(msg)
+    send_to_slack(msg)
   end
 
   def send_to_android(msg)
     app = Rpush::Gcm::App.find_by_name("android")
 
+    tokens = Token.android.tokens
+    return if tokens.blank?
     Rpush::Gcm::Notification.create!(
       app: app,
       registration_ids: Token.android.tokens,
@@ -37,5 +40,10 @@ class NotificationService
         )
       end
     end
+  end
+
+  def send_to_slack(msg)
+    status_str = Booth.all.map{|b| "`#{b.id}:" + (b.vacant? ? "🚽" : "💩") + "`" }.join(" ")
+    SlackNotifyService.new.send(msg + "\n" + status_str)
   end
 end

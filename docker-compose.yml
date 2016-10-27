@@ -29,6 +29,7 @@ services:
       - DB_HOST=db
       - CACHE_HOST="redis://cache:6379/0"
       - DEBUG_WITH_SPRING=true
+#      - SLACK_WEBHOOK_URL="https://hooks.slack.com/services/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"
     depends_on:
       - bundle
     links:

@@ -39,6 +39,7 @@ gem 'groupdate'
 # Push notification
 gem 'rpush'
 gem 'net-http-persistent', '2.9.4'
+gem 'slack-notifier'
 
 group :development, :test do
   gem 'dotenv-rails'
