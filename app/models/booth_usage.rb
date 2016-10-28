@@ -14,6 +14,7 @@
 #
 
 class BoothUsage < ApplicationRecord
+  MINUTES_IN_HOUR = 60
   EXPIRE_PERIOD = 8.days.ago.at_end_of_day
 
   scope :created_at, ->(t=Time.now) { where(created_at: t) }
@@ -22,6 +23,24 @@ class BoothUsage < ApplicationRecord
   belongs_to :booth
 
   class << self
+    def create_from_booth(booth)
+      used_min_div, used_min_mod = ((booth.updated_at - booth.previous.updated_at)/60).round.divmod(MINUTES_IN_HOUR)
+      updated_min = booth.updated_at.min
+      result = {booth.updated_at => used_min_mod}
+      ((result.count)..used_min_div).each do |i|
+        result[booth.updated_at-i.hour] = MINUTES_IN_HOUR
+      end
+
+      if updated_min < used_min_mod
+        result[booth.updated_at] = updated_min
+        result[booth.updated_at-result.count.hour] = used_min_mod - updated_min
+      end
+
+      result.each do |k, v|
+        self.create(created_at: k, use_minute: v)
+      end
+    end
+
     def by_hour(day=Date.today, hour_range: 8..19)
       self.created_at(day.to_time.all_day).group_by_hour_of_day(:created_at).sum(:use_minute).select_by_key_range(hour_range).value_to_percent(Booth.count*60)
     end

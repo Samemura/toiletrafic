@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026035338) do
+ActiveRecord::Schema.define(version: 20161028044816) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "email",                  limit: 191, default: "", null: false
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20161026035338) do
     t.datetime "updated_at",                                      null: false
     t.index ["email"], name: "index_admins_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "booth_logs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "duration_secs"
+    t.integer  "booth_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["booth_id"], name: "index_booth_logs_on_booth_id", using: :btree
   end
 
   create_table "booth_usages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|

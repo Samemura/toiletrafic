@@ -5,10 +5,11 @@ class SlackNotifyService
   }
 
   def initialize(url=nil, **options)
+    u = url || DEFAULT_URL
     @notifier = Slack::Notifier.new(
-      url || DEFAULT_URL,
+      u,
       DEFAULT_OPTIONS.merge(options)
-    )
+    ) if u
   end
 
   def send(msg, mention: nil)
